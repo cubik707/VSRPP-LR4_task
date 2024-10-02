@@ -22,6 +22,9 @@ using (StudentLibraryContext db = new ())
     {
         Console.WriteLine($"{b.BookId}. {b.Title} - {b.Author}");
     }
+
+    // Сохраняем результаты в файл
+    SaveBooksToFile(books, "Books_After_Addition.txt");
 }
 
 // Редактирование
@@ -43,6 +46,9 @@ using (StudentLibraryContext db = new ())
     {
         Console.WriteLine($"{b.BookId}. {b.Title} - {b.Author}");
     }
+
+    // Сохраняем данные после редактирования
+    SaveBooksToFile(books, "Books_After_Editing.txt");
 }
 
 // Удаление
@@ -63,4 +69,19 @@ using (StudentLibraryContext db = new ())
     {
         Console.WriteLine($"{b.BookId}. {b.Title} - {b.Author}");
     }
+
+    // Сохраняем данные после удаления
+    SaveBooksToFile(books, "Books_After_Deletion.txt");
+}
+
+void SaveBooksToFile(List<Book> books, string fileName)
+{
+    using (StreamWriter writer = new StreamWriter(fileName))
+    {
+        foreach (Book book in books)
+        {
+            writer.WriteLine($"{book.BookId}. {book.Title} - {book.Author}");
+        }
+    }
+    Console.WriteLine($"Результаты сохранены в файл {fileName}");
 }
