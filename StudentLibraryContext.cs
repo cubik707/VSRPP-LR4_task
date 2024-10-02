@@ -9,7 +9,7 @@ namespace LR4_task
 {
     public class StudentLibraryContext : DbContext
     {
-        public DbSet<Book> books { get; set; } = null!;
+        public DbSet<Book> Books { get; set; } = null!;
         public StudentLibraryContext() => Database.EnsureCreated();
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
