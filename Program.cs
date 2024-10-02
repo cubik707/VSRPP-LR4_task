@@ -1,6 +1,12 @@
-﻿// Добавление
-using LR4_task;
+﻿using LR4_task;
 
+using (StudentLibraryContext db = new ())
+{
+    db.Database.EnsureDeleted();
+    db.Database.EnsureCreated();
+}
+
+// Добавление
 using (StudentLibraryContext db = new ())
 {
     Book warAndPeace = new () { Title = "War and Peace", Author = "Leo Tolstoy" };
@@ -74,9 +80,9 @@ using (StudentLibraryContext db = new ())
     SaveBooksToFile(books, "Books_After_Deletion.txt");
 }
 
-void SaveBooksToFile(List<Book> books, string fileName)
+static void SaveBooksToFile(List<Book> books, string fileName)
 {
-    using (StreamWriter writer = new StreamWriter(fileName))
+    using (StreamWriter writer = new (fileName))
     {
         foreach (Book book in books)
         {

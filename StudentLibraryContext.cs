@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace LR4_task
     public class StudentLibraryContext : DbContext
     {
         public DbSet<Book> Books { get; set; } = null!;
-        public StudentLibraryContext() => Database.EnsureCreated();
+        public StudentLibraryContext() => Database.EnsureCreated();        
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
